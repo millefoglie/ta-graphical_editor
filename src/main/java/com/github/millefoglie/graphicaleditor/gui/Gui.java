@@ -25,9 +25,6 @@ public class Gui {
     /** The drawing pane. */
     private DrawingPane drawPane;
 
-    /**
-     * Instantiates a new gui.
-     */
     private Gui() {}
     
     public static Gui getInstance() {
@@ -62,9 +59,6 @@ public class Gui {
         jfrm.setVisible(true);
     }
     
-    /**
-     * Sets up the shape buttons.
-     */
     private void setUpShapeButtons() {
 	JPanel jpanShapeButtons = new JPanel();
 	jpanShapeButtons.setLayout(new FlowLayout());

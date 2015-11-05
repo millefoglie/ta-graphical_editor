@@ -16,21 +16,11 @@ import com.github.millefoglie.graphicaleditor.listeners.DrawingPaneMouseListener
  */
 public class DrawingPane extends JPanel {
 
-    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 7003768625421565753L;
-
-    /** The shape components. */
     private final List<ShapeComponent> shapeComponents = new LinkedList<>();
-    
-    /** The shape context menu. */
     private ShapeContextMenu shapeContextMenu;
-    
-    /** The drawing pane context menu. */
     private DrawingPaneContextMenu drawingPaneContextMenu;
 
-    /**
-     * Initialize.
-     */
     public void init() {
 	Dimension dim = new Dimension(790, 565);
 

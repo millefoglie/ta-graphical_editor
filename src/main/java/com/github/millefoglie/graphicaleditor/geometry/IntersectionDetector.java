@@ -1,24 +1,18 @@
-package com.github.millefoglie.graphicaleditor.util;
+package com.github.millefoglie.graphicaleditor.geometry;
 
 import java.awt.Point;
 import java.awt.Polygon;
 import java.util.Collection;
 import java.util.Iterator;
 
-import com.github.millefoglie.graphicaleditor.shapes.AbstractPolygon;
+import com.github.millefoglie.graphicaleditor.shapes.PolygonalShape;
 import com.github.millefoglie.graphicaleditor.shapes.AbstractShape;
 import com.github.millefoglie.graphicaleditor.shapes.Circle;
-import com.github.millefoglie.graphicaleditor.shapes.Ellipse;
 
-// TODO: Auto-generated Javadoc
 /**
  * The class for detecting intersections between various shapes.
  */
 public class IntersectionDetector {
-
-    /** The Constant UNKNOWN_SHAPE_MSG. */
-    private static final String UNKNOWN_SHAPE_MSG =
-	    "Could not process shape";
 
     /**
      * Instantiates a new intersection detector.
@@ -64,7 +58,7 @@ public class IntersectionDetector {
 	    return intersectCircle((Circle) s1, (Circle) s2);
 	}
 
-	return intersect(polygonize(s1), polygonize(s2));
+	return intersect(s1.getProxy(), s2.getProxy());
     }
 
     /**
@@ -74,7 +68,11 @@ public class IntersectionDetector {
      * @param p2 the second polygon
      * @return true, if polygons intersect
      */
-    private static boolean intersect(AbstractPolygon p1, AbstractPolygon p2) {
+    private static boolean intersect(PolygonalShape p1, PolygonalShape p2) {
+	if ((p1 == null) || (p2 == null)) {
+	    return false;
+	}
+	
 	return separationLineTest(p1, p2) && separationLineTest(p2, p1);
     }
 
@@ -90,7 +88,7 @@ public class IntersectionDetector {
      * @return true, if no gap is found
      */
     private static boolean separationLineTest(
-	    AbstractPolygon p1, AbstractPolygon p2) {
+	    PolygonalShape p1, PolygonalShape p2) {
 	// get shape without transformations
 	Polygon poly1 = p1.getBaseShape();
 
@@ -152,24 +150,4 @@ public class IntersectionDetector {
 
 	return GeomUtil.dist(cx1, cy1, cx2, cy2) < r1 + r2;
     }
-
-
-    /**
-     * Convert shape to polygon.
-     *
-     * @param s the shape
-     * @return the polygon
-     */
-    private static AbstractPolygon polygonize(AbstractShape s) {
-	if (s instanceof AbstractPolygon) {
-	    return (AbstractPolygon) s;
-	}
-
-	if (s instanceof Ellipse) {
-	    return ((Ellipse) s).getProxy();
-	}
-
-	throw new IllegalArgumentException(UNKNOWN_SHAPE_MSG);
-    }
-
 }

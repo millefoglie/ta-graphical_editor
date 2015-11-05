@@ -1,4 +1,4 @@
-package com.github.millefoglie.graphicaleditor.util;
+package com.github.millefoglie.graphicaleditor.geometry;
 
 
 /**

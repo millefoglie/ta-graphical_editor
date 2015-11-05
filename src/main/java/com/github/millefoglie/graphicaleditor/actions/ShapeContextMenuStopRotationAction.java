@@ -5,25 +5,22 @@ import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.JPopupMenu;
 
+import com.github.millefoglie.graphicaleditor.Document;
+import com.github.millefoglie.graphicaleditor.Editor;
+import com.github.millefoglie.graphicaleditor.commands.Command;
+import com.github.millefoglie.graphicaleditor.commands.CommandFactory;
 import com.github.millefoglie.graphicaleditor.gui.Gui;
 import com.github.millefoglie.graphicaleditor.gui.ShapeComponent;
-import com.github.millefoglie.graphicaleditor.shapes.AbstractShape;
 
 /**
- * The Shape Context Menu Rotate Stop Action.
+ * The Shape Context Menu Stop Rotation Action.
  */
-public class ShapeContextMenuRotateStopAction extends AbstractAction {
+public class ShapeContextMenuStopRotationAction extends AbstractAction {
 
-    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 2200742362121697306L;
-    
-    /** The Constant ROTATE_STOP. */
     public static final String ROTATE_STOP = "stop";
     
-    /**
-     * Instantiates a new shape context menu rotate stop action.
-     */
-    public ShapeContextMenuRotateStopAction() {
+    public ShapeContextMenuStopRotationAction() {
 	putValue(NAME, ROTATE_STOP);
     }
 
@@ -33,9 +30,12 @@ public class ShapeContextMenuRotateStopAction extends AbstractAction {
 		.getDrawingPane().getShapeContextMenu();
 	
 	ShapeComponent sc = (ShapeComponent) menu.getInvoker();
-	AbstractShape s = sc.getShapeElement();
 	
-	s.getAnimationStatus().setRotating(false);
+	Command cmd = CommandFactory.newStopShapeRotationCommand(sc);
+	Document doc = Editor.getInstance().getDocument();
+	
+	doc.addHistory(cmd);
+	cmd.exec();
     }
 
 }

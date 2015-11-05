@@ -12,53 +12,45 @@ import javax.swing.JComponent;
 import com.github.millefoglie.graphicaleditor.shapes.AbstractShape;
 
 /**
- * The Shape Component class.
+ * The Shape Component class, represents a Swing component for a shape object.
  */
 @SuppressWarnings("serial")
 public class ShapeComponent extends JComponent {
     
-    /** The shape element. */
-    private AbstractShape shapeElement;
+    private AbstractShape shape;
     
-    /**
-     * Instantiates a new shape component.
-     */
     public ShapeComponent() {
 	setOpaque(false);
 	setInheritsPopupMenu(false);
     }
     
-    /**
-     * Instantiates a new shape component.
-     *
-     * @param shapeElement the shape element
-     */
-    public ShapeComponent(AbstractShape shapeElement) {
+    public ShapeComponent(AbstractShape shape) {
 	this();
-	this.shapeElement = shapeElement;
+	this.shape = shape;
 	
-	setBounds(shapeElement.getShape().getBounds());
+	setBounds(shape.getShape().getBounds());
         repaint();
     }
     
-    public AbstractShape getShapeElement() {
-        return shapeElement;
+    public AbstractShape getShape() {
+        return shape;
     }
 
-    public void setShapeElement(AbstractShape shapeElement) {
-	this.shapeElement = shapeElement;
+    public void setShape(AbstractShape shape) {
+	this.shape = shape;
 	
 	setOpaque(false);
-	setBounds(shapeElement.getShape().getBounds());
+	setBounds(shape.getShape().getBounds());
         revalidate();
         repaint();
     }
 
     @Override
     public Dimension getPreferredSize() {
+	
         //  Include Border insets and Shape bounds
         Insets insets = getInsets();
-        Rectangle bounds = shapeElement.getShape().getBounds();
+        Rectangle bounds = shape.getShape().getBounds();
 
         //  Determine the preferred size
         int width = insets.left + insets.right + bounds.width;
@@ -85,7 +77,7 @@ public class ShapeComponent extends JComponent {
 
         //  Shape translation (ie. non-zero X/Y position in bounding rectangle)
         //  and Border insets.
-        Rectangle bounds = shapeElement.getShape().getBounds();
+        Rectangle bounds = shape.getShape().getBounds();
         Insets insets = getInsets();
         
         // TODO: fix shape outline clipping
@@ -96,7 +88,7 @@ public class ShapeComponent extends JComponent {
         this.setBounds(bounds);
         
         g2d.setColor(Color.BLACK);
-        g2d.draw(shapeElement.getShape());
+        g2d.draw(shape.getShape());
 
         g2d.dispose();
     }
@@ -104,7 +96,7 @@ public class ShapeComponent extends JComponent {
     @Override
     public boolean contains(int x, int y)
     {
-        Rectangle bounds = shapeElement.getShape().getBounds();
+        Rectangle bounds = shape.getShape().getBounds();
         Insets insets = getInsets();
 
         //  Check to see if the Shape contains the point. Take into account
@@ -112,6 +104,6 @@ public class ShapeComponent extends JComponent {
         int translateX = x + bounds.x - insets.left;
         int translateY = y + bounds.y - insets.top;
         
-        return shapeElement.getShape().contains(translateX, translateY);
+        return shape.getShape().contains(translateX, translateY);
     }
 }

@@ -1,4 +1,4 @@
-package com.github.millefoglie.graphicaleditor.util;
+package com.github.millefoglie.graphicaleditor.geometry;
 
 import static java.lang.Math.cos;
 import static java.lang.Math.pow;
@@ -7,10 +7,10 @@ import static java.lang.Math.sin;
 import java.awt.Point;
 import java.awt.Polygon;
 
-import com.github.millefoglie.graphicaleditor.shapes.AbstractPolygon;
+import com.github.millefoglie.graphicaleditor.shapes.PolygonalShape;
 
 /**
- * The geometric utility class.
+ * The class for geometric operations with points on a plane.
  */
 public class GeomUtil {
     
@@ -95,7 +95,7 @@ public class GeomUtil {
      * Can be considered as an interval on a real axis.
      */
     public static Interval<Double> project(int x1, int y1,
-	    int x2, int y2, AbstractPolygon abPoly) {
+	    int x2, int y2, PolygonalShape abPoly) {
 	
 	Polygon poly = abPoly.getBaseShape();
 	
@@ -142,7 +142,7 @@ public class GeomUtil {
      * Can be considered as an interval on a real axis.
      */
     public static Interval<Double> project(Point start, Point end,
-	    AbstractPolygon abPoly) {
+	    PolygonalShape abPoly) {
 	return project((int) start.getX(), (int) start.getY(),
 		(int) end.getX(), (int) end.getY(), abPoly);
     }

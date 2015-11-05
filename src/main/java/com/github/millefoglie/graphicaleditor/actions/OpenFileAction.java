@@ -11,11 +11,11 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 
+import com.github.millefoglie.graphicaleditor.Document;
 import com.github.millefoglie.graphicaleditor.Editor;
 import com.github.millefoglie.graphicaleditor.gui.DrawingPane;
 import com.github.millefoglie.graphicaleditor.gui.Gui;
 import com.github.millefoglie.graphicaleditor.gui.ShapeComponent;
-import com.github.millefoglie.graphicaleditor.model.Document;
 import com.github.millefoglie.graphicaleditor.shapes.AbstractShape;
 
 /**
@@ -23,19 +23,11 @@ import com.github.millefoglie.graphicaleditor.shapes.AbstractShape;
  */
 public class OpenFileAction extends AbstractAction {
     
-    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 3821461942203864759L;
-    
-    /** The Constant FILE_OPEN_FAILED. */
     private static final String FILE_OPEN_FAILED =
 	    "Could not open this file";
-    
-    /** The Constant OPEN. */
     public static final String OPEN = "open";
 
-    /**
-     * Instantiates a new open file action.
-     */
     public OpenFileAction() {
 	putValue(NAME, OPEN);
     }
@@ -52,9 +44,10 @@ public class OpenFileAction extends AbstractAction {
 		Document doc = (Document) in.readObject();
 		DrawingPane drawPane = Gui.getInstance().getDrawingPane();
 		JPopupMenu menu = drawPane.getShapeContextMenu();
-		    
-		Editor.getInstance().setDocument(doc);
+		
 		drawPane.clear();
+		doc.clearHistory();
+		Editor.getInstance().setDocument(doc);
 		
 		ShapeComponent sc;
 		
@@ -66,7 +59,6 @@ public class OpenFileAction extends AbstractAction {
 		}
 		
 		drawPane.repaint();
-		doc.getAnimation().start();
 		
 	    } catch (IOException | ClassNotFoundException e1) {
 		JOptionPane.showMessageDialog(null, FILE_OPEN_FAILED);

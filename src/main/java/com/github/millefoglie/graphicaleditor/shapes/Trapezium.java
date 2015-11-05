@@ -5,12 +5,9 @@ import java.awt.Polygon;
 /**
  * The Trapezium class.
  */
-public class Trapezium extends AbstractPolygon {
+public class Trapezium extends PolygonalShape {
     
-    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -2715644182178429534L;
-
-    /** The Constant UNIT. */
     private static final int UNIT = 30;
     
     /**

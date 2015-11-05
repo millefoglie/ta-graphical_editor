@@ -3,9 +3,14 @@ package com.github.millefoglie.graphicaleditor.transformations;
 import java.util.Collection;
 
 import com.github.millefoglie.graphicaleditor.Editor;
+import com.github.millefoglie.graphicaleditor.geometry.IntersectionDetector;
 import com.github.millefoglie.graphicaleditor.shapes.AbstractShape;
-import com.github.millefoglie.graphicaleditor.util.IntersectionDetector;
 
+/**
+ * @author "millefoglie"
+ *
+ * The rotation transformation.
+ */
 public class Rotation implements Transformation {
 
     private static final long serialVersionUID = -5358285454631896699L;
@@ -37,12 +42,8 @@ public class Rotation implements Transformation {
 	}
     }
 
+    @Override
     public boolean isExpired() {
 	return expired;
     }
-
-    public void setExpired(boolean expired) {
-	this.expired = expired;
-    }
-
 }

@@ -1,6 +1,5 @@
 package com.github.millefoglie.graphicaleditor.shapes;
 
-import java.awt.Polygon;
 import java.awt.Shape;
 import java.awt.geom.AffineTransform;
 import java.io.Serializable;
@@ -9,31 +8,29 @@ import com.github.millefoglie.graphicaleditor.animation.AnimationStatus;
 
 /**
  * An abstract shape that provides a bridge to Java 2D API shapes and adds
- * additional functionality for geometric manipulations
+ * additional functionality for geometric manipulations and animations.
  */
-public class AbstractShape implements Cloneable, Serializable {
+public abstract class AbstractShape implements Cloneable, Serializable {
     
     /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1905126146086563967L;
 
-    /** The center X. */
+    /** The centre X. */
     protected int cx;
     
-    /** The center Y. */
+    /** The centre Y. */
     protected int cy;
     
     /** The angle of the shape current rotation. */
     protected double theta;
     
+    /** The animation status flags. */
     protected AnimationStatus animationStatus;
     
     /** The base shape (without any transformations). */
     protected Shape baseShape;
     
-    /** The polygonal proxy. */
-    protected Polygon proxy;
-    
-    /** The shape. */
+    /** The Java 2D API shape. */
     protected Shape shape;
     
     /** The affine transformation. */
@@ -99,17 +96,10 @@ public class AbstractShape implements Cloneable, Serializable {
     public void setBaseShape(Shape shape) {
 	this.baseShape = shape;
 	this.shape = shape;
+	this.theta = 0;
     }
     
-    
-
-//    public Polygon getProxy() {
-//        return proxy;
-//    }
-//
-//    public void setProxy(Polygon proxy) {
-//        this.proxy = proxy;
-//    }
+    public abstract PolygonalShape getProxy();
 
     /**
      * Rotate the shape.

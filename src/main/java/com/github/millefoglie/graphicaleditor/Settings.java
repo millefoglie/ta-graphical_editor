@@ -1,5 +1,10 @@
-package com.github.millefoglie.graphicaleditor.util;
+package com.github.millefoglie.graphicaleditor;
 
+/**
+ * @author "millefoglie"
+ *
+ * A class for storing App settings.
+ */
 public class Settings {
 
     private static int fps = 60;

@@ -9,32 +9,30 @@ import com.github.millefoglie.graphicaleditor.Document;
 import com.github.millefoglie.graphicaleditor.Editor;
 import com.github.millefoglie.graphicaleditor.commands.Command;
 import com.github.millefoglie.graphicaleditor.commands.CommandFactory;
-import com.github.millefoglie.graphicaleditor.gui.DrawingPane;
 import com.github.millefoglie.graphicaleditor.gui.Gui;
 import com.github.millefoglie.graphicaleditor.gui.ShapeComponent;
 
 /**
- * The Shape Context Menu Delete Action.
+ * The Shape Context Menu Start Rotation Action.
  */
-public class ShapeContextMenuDeleteAction extends AbstractAction {
+public class ShapeContextMenuStartRotationAction extends AbstractAction {
 
-    private static final long serialVersionUID = 5430115521614347917L;
-    public static final String DELETE = "delete";
-
-    public ShapeContextMenuDeleteAction() {
-	putValue(NAME, DELETE);
+    private static final long serialVersionUID = 2200742362121697306L;
+    public static final String ROTATE_START = "rotate";
+    
+    public ShapeContextMenuStartRotationAction() {
+	putValue(NAME, ROTATE_START);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-	Editor editor = Editor.getInstance();
-	DrawingPane drawPane = Gui.getInstance().getDrawingPane();
-	JPopupMenu menu = drawPane.getShapeContextMenu();
+	JPopupMenu menu =
+		Gui.getInstance().getDrawingPane().getShapeContextMenu();
 	
 	ShapeComponent sc = (ShapeComponent) menu.getInvoker();
 	
-	Command cmd = CommandFactory.newDeleteShapeCommand(sc);
-	Document doc = editor.getDocument();
+	Command cmd = CommandFactory.newStartShapeRotationCommand(sc);
+	Document doc = Editor.getInstance().getDocument();
 	
 	doc.addHistory(cmd);
 	cmd.exec();

@@ -1,15 +1,11 @@
 package com.github.millefoglie.graphicaleditor.shapes;
 
-
 /**
  * The Circle class.
  */
 public class Circle extends Ellipse {
     
-    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 4546183360446647593L;
-
-    /** The Constant DEFALUT_RADIUS. */
     private static final int DEFALUT_RADIUS = 40;
     
     /**
@@ -23,7 +19,7 @@ public class Circle extends Ellipse {
     }
 
     public double getRadius() {
-	return a;
+	return a;	// ellipses' half-axis
     }
     
     @Override

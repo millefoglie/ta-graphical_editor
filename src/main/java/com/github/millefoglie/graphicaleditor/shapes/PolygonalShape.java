@@ -4,16 +4,16 @@ import java.awt.Polygon;
 import java.awt.Shape;
 
 /**
- * An abstract polygon class which is a bridge to Java 2D Polygon.
+ * A Polygonal Shape class, which is a bridge to the Java 2D API Polygon.
  */
-public class AbstractPolygon extends AbstractShape {
+public class PolygonalShape extends AbstractShape {
 
     private static final long serialVersionUID = 345026425159683900L;
 
     /**
      * Instantiates a new abstract polygon.
      */
-    public AbstractPolygon() {
+    public PolygonalShape() {
 	baseShape = new Polygon();
 	shape = baseShape;
     }
@@ -24,7 +24,7 @@ public class AbstractPolygon extends AbstractShape {
      * @param cx the center X
      * @param cy the center Y
      */
-    public AbstractPolygon(int cx, int cy) {
+    public PolygonalShape(int cx, int cy) {
 	super(cx, cy);
 	baseShape = new Polygon();
 	shape = baseShape;
@@ -52,4 +52,10 @@ public class AbstractPolygon extends AbstractShape {
 	
 	super.setBaseShape(shape);
     }
+
+    @Override
+    public PolygonalShape getProxy() {
+	return this;
+    }
+    
 }

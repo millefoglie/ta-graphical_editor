@@ -11,7 +11,7 @@ import com.github.millefoglie.graphicaleditor.gui.ShapeContextMenu;
  * The class that is interested in processing a shapeContextMenuPopup
  * event implements this interface, and the object created
  * with that class is registered with a component using the
- * component's <code>addShapeContextMenuPopupListener<code> method. When
+ * component's @code{addShapeContextMenuPopupListener} method. When
  * the shapeContextMenuPopup event occurs, that object's appropriate
  * method is invoked.
  *
@@ -25,10 +25,10 @@ public class ShapeContextMenuPopupListener implements PopupMenuListener {
 	ShapeComponent sc = (ShapeComponent) menu.getInvoker();
 	
 	// toggle rotate / stop actions depending on rotation status
-	if (sc.getShapeElement().getAnimationStatus().isRotating()) {
-	    menu.setRotateStopAction();
+	if (sc.getShape().getAnimationStatus().isRotating()) {
+	    menu.useRotateStopAction();
 	} else {
-	    menu.setRotateStartAction();
+	    menu.useRotateStartAction();
 	}
     }
 

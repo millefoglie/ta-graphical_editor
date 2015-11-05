@@ -5,12 +5,9 @@ import java.awt.Polygon;
 /**
  * The Square class.
  */
-public class Square extends AbstractPolygon {
+public class Square extends PolygonalShape {
 
-    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1396154981482160892L;
-
-    /** The Constant UNIT. */
     private static final int UNIT = 30;
     
     /**

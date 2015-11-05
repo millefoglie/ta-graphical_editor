@@ -4,33 +4,26 @@ import java.awt.Point;
 import java.awt.Polygon;
 import java.awt.geom.Ellipse2D;
 
-import com.github.millefoglie.graphicaleditor.util.GeomUtil;
+import com.github.millefoglie.graphicaleditor.geometry.GeomUtil;
 
 /**
  * The Ellipse class.
  */
 public class Ellipse extends AbstractShape {
 
-    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 963445119666821858L;
-
-    /** The Constant DEFAULT_A. */
     private static final int DEFAULT_A = 50;
-    
-    /** The Constant DEFAULT_B. */
     private static final int DEFAULT_B = 30;
-    
-    /** Number of segments in polygonal approximation. */
     private static final int SEGMENTS = 32;
 
-    /** The big half-axist. */
+    /** The big half-axis. */
     protected double a;
     
     /** The small half-axis. */
     protected double b;
 
     /** The polygonal approximation. */
-    protected AbstractPolygon proxy;
+    protected PolygonalShape proxy;
 
     /**
      * Instantiates a new ellipse.
@@ -81,12 +74,8 @@ public class Ellipse extends AbstractShape {
 	return b;
     }
 
-    /**
-     * Gets the polygonal proxy.
-     *
-     * @return the proxy
-     */
-    public AbstractPolygon getProxy() {
+    @Override
+    public PolygonalShape getProxy() {
 	if (proxy == null) {
 	    Polygon poly = new Polygon();
 
@@ -104,7 +93,7 @@ public class Ellipse extends AbstractShape {
 		poly.addPoint((int) p.getX(), (int) p.getY());
 	    }
 
-	    proxy = new AbstractPolygon(cx, cy);
+	    proxy = new PolygonalShape(cx, cy);
 	    proxy.setBaseShape(poly);
 	}
 

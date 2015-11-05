@@ -12,29 +12,14 @@ import com.github.millefoglie.graphicaleditor.actions.SaveFileAction;
  */
 public class DrawingPaneContextMenu extends JPopupMenu {
     
-    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 577492804369940901L;
-
-    /** The open file action. */
     private Action openFile;
-    
-    /** The save file action. */
     private Action saveFile;
-    
-    /** The open file menu item. */
     private JMenuItem jmiOpen;
-    
-    /** The save file menu item. */
     private JMenuItem jmiSave;
     
-    /**
-     * Instantiates a new drawing pane context menu.
-     */
     public DrawingPaneContextMenu() {}
     
-    /**
-     * Initialize the context menu.
-     */
     public void init() {
 	openFile = new OpenFileAction();
 	saveFile = new SaveFileAction();

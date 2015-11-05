@@ -5,12 +5,9 @@ import java.awt.Polygon;
 /**
  * The Triangle class.
  */
-public class Triangle extends AbstractPolygon {
+public class Triangle extends PolygonalShape {
 
-    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -433298419230605019L;
-
-    /** The Constant UNIT. */
     private static final int UNIT = 40;
     
     /**
@@ -29,8 +26,8 @@ public class Triangle extends AbstractPolygon {
 	Polygon poly = new Polygon();
 	
 	poly.addPoint(cx, cy - UNIT);
-	poly.addPoint(cx + UNIT, cy + UNIT);
-	poly.addPoint(cx - UNIT, cy + UNIT);
+	poly.addPoint((int) (cx + 0.86 * UNIT), (int) (cy + 0.5 * UNIT));
+	poly.addPoint((int) (cx - 0.86 * UNIT), (int) (cy + 0.5 * UNIT));
 	
 	setBaseShape(poly);
     }

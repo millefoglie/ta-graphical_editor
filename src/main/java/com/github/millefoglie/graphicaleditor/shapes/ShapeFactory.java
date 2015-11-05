@@ -3,7 +3,7 @@ package com.github.millefoglie.graphicaleditor.shapes;
 /**
  * A factory for creating AbstractShape objects.
  */
-public class ShapeElementFactory {
+public class ShapeFactory {
 
     /**
      * New shape element.
