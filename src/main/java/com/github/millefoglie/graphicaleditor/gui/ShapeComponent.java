@@ -13,10 +13,15 @@ import com.github.millefoglie.graphicaleditor.shapes.AbstractShape;
 
 /**
  * The Shape Component class, represents a Swing component for a shape object.
+ * It enables using shapes as components with listeners, context menus
+ * and so on. 
+ * 
+ * This class was found somewhere on the Internet.
  */
-@SuppressWarnings("serial")
 public class ShapeComponent extends JComponent {
     
+    private static final long serialVersionUID = -1912025043404696580L;
+
     private AbstractShape shape;
     
     public ShapeComponent() {
@@ -80,7 +85,7 @@ public class ShapeComponent extends JComponent {
         Rectangle bounds = shape.getShape().getBounds();
         Insets insets = getInsets();
         
-        // TODO: fix shape outline clipping
+        // fix shape outline clipping
         bounds.grow(1, 1);
 
         //  Do all translations at once
@@ -106,4 +111,5 @@ public class ShapeComponent extends JComponent {
         
         return shape.getShape().contains(translateX, translateY);
     }
+    
 }

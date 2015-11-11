@@ -5,17 +5,14 @@ import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.JPopupMenu;
 
-import com.github.millefoglie.graphicaleditor.Document;
 import com.github.millefoglie.graphicaleditor.Editor;
 import com.github.millefoglie.graphicaleditor.commands.Command;
 import com.github.millefoglie.graphicaleditor.commands.CommandFactory;
+import com.github.millefoglie.graphicaleditor.document.Document;
 import com.github.millefoglie.graphicaleditor.gui.DrawingPane;
 import com.github.millefoglie.graphicaleditor.gui.Gui;
 import com.github.millefoglie.graphicaleditor.gui.ShapeComponent;
 
-/**
- * The Shape Context Menu Delete Action.
- */
 public class ShapeContextMenuDeleteAction extends AbstractAction {
 
     private static final long serialVersionUID = 5430115521614347917L;
@@ -36,7 +33,7 @@ public class ShapeContextMenuDeleteAction extends AbstractAction {
 	Command cmd = CommandFactory.newDeleteShapeCommand(sc);
 	Document doc = editor.getDocument();
 	
-	doc.addHistory(cmd);
+	doc.commit();
 	cmd.exec();
     }
 

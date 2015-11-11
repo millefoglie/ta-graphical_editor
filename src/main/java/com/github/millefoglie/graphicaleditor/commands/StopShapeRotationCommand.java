@@ -5,6 +5,8 @@ import com.github.millefoglie.graphicaleditor.shapes.AbstractShape;
 
 public class StopShapeRotationCommand implements Command {
 
+    private static final long serialVersionUID = 2185075083005246197L;
+
     private final ShapeComponent shapeComponent;
 
     StopShapeRotationCommand(ShapeComponent shapeComponent) {
@@ -18,11 +20,5 @@ public class StopShapeRotationCommand implements Command {
 
 	shape.getAnimationStatus().setRotating(false);
     }
-
-    @Override
-    public void undo() {
-	// TODO Auto-generated method stub
-
-    }
-
+    
 }

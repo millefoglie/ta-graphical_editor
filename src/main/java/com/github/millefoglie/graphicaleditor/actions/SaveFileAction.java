@@ -10,12 +10,9 @@ import javax.swing.AbstractAction;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
-import com.github.millefoglie.graphicaleditor.Document;
 import com.github.millefoglie.graphicaleditor.Editor;
+import com.github.millefoglie.graphicaleditor.document.Document;
 
-/**
- * The Save File Action.
- */
 public class SaveFileAction extends AbstractAction {
 
     private static final long serialVersionUID = -4590203484358650839L;

@@ -1,6 +1,6 @@
 /**
  * @author millefoglie
  * 
- * The package which contains animation related classes.
+ * Animation related classes.
  */
 package com.github.millefoglie.graphicaleditor.animation;

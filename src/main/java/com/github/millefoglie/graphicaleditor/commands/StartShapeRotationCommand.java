@@ -1,7 +1,7 @@
 package com.github.millefoglie.graphicaleditor.commands;
 
-import com.github.millefoglie.graphicaleditor.Document;
 import com.github.millefoglie.graphicaleditor.Editor;
+import com.github.millefoglie.graphicaleditor.document.Document;
 import com.github.millefoglie.graphicaleditor.gui.ShapeComponent;
 import com.github.millefoglie.graphicaleditor.shapes.AbstractShape;
 import com.github.millefoglie.graphicaleditor.transformations.Transformation;
@@ -9,6 +9,8 @@ import com.github.millefoglie.graphicaleditor.transformations.TransformationFact
 
 public class StartShapeRotationCommand implements Command {
 
+    private static final long serialVersionUID = -1723066498070575639L;
+  
     private final ShapeComponent shapeComponent;
 
     StartShapeRotationCommand(ShapeComponent shapeComponent) {
@@ -29,11 +31,5 @@ public class StartShapeRotationCommand implements Command {
 	shape.getAnimationStatus().setRotating(true);
 	doc.addTransformation(t);
     }
-
-    @Override
-    public void undo() {
-	// TODO Auto-generated method stub
-
-    }
-
+    
 }

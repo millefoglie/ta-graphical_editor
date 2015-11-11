@@ -11,18 +11,11 @@ import javax.swing.JPanel;
 import com.github.millefoglie.graphicaleditor.listeners.ShapeButtonActionListener;
 import com.github.millefoglie.graphicaleditor.shapes.ShapeNames;
 
-/**
- * The GUI.
- */
 public class Gui {
     
-    /** The instance. */
     private static final Gui GUI = new Gui();
     
-    /** The main frame. */
     private JFrame jfrm;
-    
-    /** The drawing pane. */
     private DrawingPane drawPane;
 
     private Gui() {}
@@ -77,13 +70,6 @@ public class Gui {
 	jfrm.add(jpanShapeButtons);
     }
     
-    /**
-     * Adds a new button to a panel.
-     *
-     * @param jpanel the panel
-     * @param caption the button caption
-     * @param listener the button action listener
-     */
     private void addNewButton(JPanel jpanel,
 	    String caption,
 	    ActionListener listener) {

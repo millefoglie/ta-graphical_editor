@@ -9,9 +9,6 @@ import com.github.millefoglie.graphicaleditor.actions.ShapeContextMenuStartRotat
 import com.github.millefoglie.graphicaleditor.actions.ShapeContextMenuStopRotationAction;
 import com.github.millefoglie.graphicaleditor.listeners.ShapeContextMenuPopupListener;
 
-/**
- * The Shape Context Menu.
- */
 public class ShapeContextMenu extends JPopupMenu {
     
     private static final long serialVersionUID = 7581801945279968503L;
@@ -47,4 +44,5 @@ public class ShapeContextMenu extends JPopupMenu {
     public void useRotateStopAction() {
 	jmiRotate.setAction(rotateStopAction);
     }
+    
 }

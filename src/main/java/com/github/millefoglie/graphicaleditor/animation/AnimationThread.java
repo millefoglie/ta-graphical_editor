@@ -3,9 +3,9 @@ package com.github.millefoglie.graphicaleditor.animation;
 import java.util.Iterator;
 import java.util.concurrent.BlockingQueue;
 
-import com.github.millefoglie.graphicaleditor.Document;
 import com.github.millefoglie.graphicaleditor.Editor;
 import com.github.millefoglie.graphicaleditor.Settings;
+import com.github.millefoglie.graphicaleditor.document.Document;
 import com.github.millefoglie.graphicaleditor.gui.DrawingPane;
 import com.github.millefoglie.graphicaleditor.gui.Gui;
 import com.github.millefoglie.graphicaleditor.transformations.Transformation;
@@ -33,18 +33,16 @@ public class AnimationThread extends Thread {
 	    
 	    startTS = System.currentTimeMillis();
 	    
-	    // repeat a set number of times for each frame
-	    for (iteration = 0;
-		    iteration < iterationsPerFrame; iteration++) {
-		for (it = transformationsQueue.iterator();
-			it.hasNext(); ) {
+	    // repeat a given number of times for each frame
+	    for (iteration = 0; iteration < iterationsPerFrame; iteration++) {
+		for (it = transformationsQueue.iterator(); it.hasNext(); ) {
 		    t = it.next();
 		    t.transform();
 		    
 		    if (t.isExpired()) {
 			it.remove();
 		    }
-		} 
+		}
 	    }
 
 	    // limit frame-rate
@@ -60,4 +58,5 @@ public class AnimationThread extends Thread {
 	    drawPane.repaint();
 	}
     }
+    
 }

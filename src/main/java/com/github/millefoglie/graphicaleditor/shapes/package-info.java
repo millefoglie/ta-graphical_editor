@@ -1,6 +1,6 @@
 /**
  * @author millefoglie
  * 
- * The package which contains shape classes.
+ * Shape classes.
  */
 package com.github.millefoglie.graphicaleditor.shapes;

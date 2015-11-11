@@ -3,6 +3,7 @@ package com.github.millefoglie.graphicaleditor;
 import javax.swing.SwingUtilities;
 
 import com.github.millefoglie.graphicaleditor.animation.AnimationThread;
+import com.github.millefoglie.graphicaleditor.document.Document;
 import com.github.millefoglie.graphicaleditor.gui.Gui;
 
 /**

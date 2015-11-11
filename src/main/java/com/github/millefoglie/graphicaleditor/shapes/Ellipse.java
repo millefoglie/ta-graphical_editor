@@ -6,9 +6,6 @@ import java.awt.geom.Ellipse2D;
 
 import com.github.millefoglie.graphicaleditor.geometry.GeomUtil;
 
-/**
- * The Ellipse class.
- */
 public class Ellipse extends AbstractShape {
 
     private static final long serialVersionUID = 963445119666821858L;
@@ -50,7 +47,7 @@ public class Ellipse extends AbstractShape {
      */
     Ellipse(int cx, int cy, double a, double b) {
 	super(cx, cy);
-	setBaseShape(new Ellipse2D.Double(cx - a, cy - b, 2 * a, 2 * b));
+	setShape(new Ellipse2D.Double(cx - a, cy - b, 2 * a, 2 * b));
 
 	this.a = a;
 	this.b = b;
@@ -94,7 +91,7 @@ public class Ellipse extends AbstractShape {
 	    }
 
 	    proxy = new PolygonalShape(cx, cy);
-	    proxy.setBaseShape(poly);
+	    proxy.setShape(poly);
 	}
 
 	// update rotation angle

@@ -89,6 +89,7 @@ public class IntersectionDetector {
      */
     private static boolean separationLineTest(
 	    PolygonalShape p1, PolygonalShape p2) {
+	
 	// get shape without transformations
 	Polygon poly1 = p1.getBaseShape();
 
@@ -96,7 +97,7 @@ public class IntersectionDetector {
 	Interval<Double> interval1;
 	Interval<Double> interval2;
 
-	// center and rotation angle of the first polygon
+	// centre and rotation angle of the first polygon
 	int cx = p1.getCx();
 	int cy = p1.getCy();
 	double theta = p1.getTheta();
@@ -150,4 +151,5 @@ public class IntersectionDetector {
 
 	return GeomUtil.dist(cx1, cy1, cx2, cy2) < r1 + r2;
     }
+    
 }

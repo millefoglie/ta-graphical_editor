@@ -3,8 +3,8 @@ package com.github.millefoglie.graphicaleditor.commands;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 
-import com.github.millefoglie.graphicaleditor.Document;
 import com.github.millefoglie.graphicaleditor.Editor;
+import com.github.millefoglie.graphicaleditor.document.Document;
 import com.github.millefoglie.graphicaleditor.geometry.IntersectionDetector;
 import com.github.millefoglie.graphicaleditor.gui.DrawingPane;
 import com.github.millefoglie.graphicaleditor.gui.Gui;
@@ -15,14 +15,15 @@ import com.github.millefoglie.graphicaleditor.shapes.ShapeNames;
 
 public class CreateShapeCommand implements Command {
 
+    private static final long serialVersionUID = 3892128606790015980L;
     private static final String SHAPE_CREATION_FAILED =
 	    "Could not create shape: new shape intersects with another shape.";
-    
+
     private final ShapeNames shapeBrush;
     private final int x;
     private final int y;
 
-    public CreateShapeCommand(ShapeNames shapeBrush, int x, int y) {
+    CreateShapeCommand(ShapeNames shapeBrush, int x, int y) {
 	super();
 	this.shapeBrush = shapeBrush;
 	this.x = x;
@@ -37,7 +38,7 @@ public class CreateShapeCommand implements Command {
 		shapeBrush, x, y);
 
 	// shapes should not intersect
-	if (IntersectionDetector.intersect(shape, doc.getShapeElements())) {
+	if (IntersectionDetector.intersect(shape, doc.getShapes())) {
 	    JOptionPane.showMessageDialog(null, SHAPE_CREATION_FAILED);
 	    return;
 	}
@@ -46,15 +47,9 @@ public class CreateShapeCommand implements Command {
 	JPopupMenu menu = drawPane.getShapeContextMenu();
 
 	sc.setComponentPopupMenu(menu);
-	doc.addShapeElement(shape);
+	doc.addShape(shape);
 	drawPane.addShapeComponent(sc);
 	drawPane.repaint();
-
     }
 
-    @Override
-    public void undo() {
-	// TODO Auto-generated method stub
-
-    }
 }

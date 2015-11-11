@@ -9,18 +9,13 @@ import java.io.ObjectInputStream;
 import javax.swing.AbstractAction;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.JPopupMenu;
 
-import com.github.millefoglie.graphicaleditor.Document;
 import com.github.millefoglie.graphicaleditor.Editor;
+import com.github.millefoglie.graphicaleditor.Util;
+import com.github.millefoglie.graphicaleditor.document.Document;
 import com.github.millefoglie.graphicaleditor.gui.DrawingPane;
 import com.github.millefoglie.graphicaleditor.gui.Gui;
-import com.github.millefoglie.graphicaleditor.gui.ShapeComponent;
-import com.github.millefoglie.graphicaleditor.shapes.AbstractShape;
 
-/**
- * The Open File Action.
- */
 public class OpenFileAction extends AbstractAction {
     
     private static final long serialVersionUID = 3821461942203864759L;
@@ -43,21 +38,11 @@ public class OpenFileAction extends AbstractAction {
 		    new ObjectInputStream(new FileInputStream(f))) {
 		Document doc = (Document) in.readObject();
 		DrawingPane drawPane = Gui.getInstance().getDrawingPane();
-		JPopupMenu menu = drawPane.getShapeContextMenu();
 		
 		drawPane.clear();
 		doc.clearHistory();
 		Editor.getInstance().setDocument(doc);
-		
-		ShapeComponent sc;
-		
-		for (AbstractShape s : doc.getShapeElements()) {
-		    sc = new ShapeComponent(s);
-		    
-		    sc.setComponentPopupMenu(menu);
-		    drawPane.addShapeComponent(sc);
-		}
-		
+		Util.generateShapeComponents(doc.getShapes());
 		drawPane.repaint();
 		
 	    } catch (IOException | ClassNotFoundException e1) {
@@ -66,5 +51,5 @@ public class OpenFileAction extends AbstractAction {
 	    }
 	}
     }
-
+    
 }

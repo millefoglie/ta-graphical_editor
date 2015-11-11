@@ -14,8 +14,7 @@ public class PolygonalShape extends AbstractShape {
      * Instantiates a new abstract polygon.
      */
     public PolygonalShape() {
-	baseShape = new Polygon();
-	shape = baseShape;
+	super.setShape(new Polygon());
     }
     
     /**
@@ -26,8 +25,7 @@ public class PolygonalShape extends AbstractShape {
      */
     public PolygonalShape(int cx, int cy) {
 	super(cx, cy);
-	baseShape = new Polygon();
-	shape = baseShape;
+	super.setShape(new Polygon());
     }
     
     @Override
@@ -44,15 +42,6 @@ public class PolygonalShape extends AbstractShape {
 	super.setShape(shape);
     }
     
-    @Override
-    public void setBaseShape(Shape shape) {
-	if (!(shape instanceof Polygon)) {
-	    throw new IllegalArgumentException("Shape is not a Polygon");
-	}
-	
-	super.setBaseShape(shape);
-    }
-
     @Override
     public PolygonalShape getProxy() {
 	return this;

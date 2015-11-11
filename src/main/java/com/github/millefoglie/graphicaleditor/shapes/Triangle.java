@@ -2,9 +2,6 @@ package com.github.millefoglie.graphicaleditor.shapes;
 
 import java.awt.Polygon;
 
-/**
- * The Triangle class.
- */
 public class Triangle extends PolygonalShape {
 
     private static final long serialVersionUID = -433298419230605019L;
@@ -25,11 +22,12 @@ public class Triangle extends PolygonalShape {
 	super(cx, cy);
 	Polygon poly = new Polygon();
 	
+	// construct equilateral triangle
 	poly.addPoint(cx, cy - UNIT);
 	poly.addPoint((int) (cx + 0.86 * UNIT), (int) (cy + 0.5 * UNIT));
 	poly.addPoint((int) (cx - 0.86 * UNIT), (int) (cy + 0.5 * UNIT));
 	
-	setBaseShape(poly);
+	setShape(poly);
     }
     
     @Override

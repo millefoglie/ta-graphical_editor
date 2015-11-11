@@ -1,7 +1,7 @@
 package com.github.millefoglie.graphicaleditor.commands;
 
-import com.github.millefoglie.graphicaleditor.Document;
 import com.github.millefoglie.graphicaleditor.Editor;
+import com.github.millefoglie.graphicaleditor.document.Document;
 import com.github.millefoglie.graphicaleditor.gui.DrawingPane;
 import com.github.millefoglie.graphicaleditor.gui.Gui;
 import com.github.millefoglie.graphicaleditor.gui.ShapeComponent;
@@ -9,9 +9,11 @@ import com.github.millefoglie.graphicaleditor.shapes.AbstractShape;
 
 public class DeleteShapeCommand implements Command {
     
+    private static final long serialVersionUID = 7786982549696632356L;
+   
     private final ShapeComponent shapeComponent;
 
-    public DeleteShapeCommand(ShapeComponent shapeComponent) {
+    DeleteShapeCommand(ShapeComponent shapeComponent) {
 	super();
 	this.shapeComponent = shapeComponent;
     }
@@ -23,14 +25,8 @@ public class DeleteShapeCommand implements Command {
 	AbstractShape shape = shapeComponent.getShape();
 	
 	drawPane.removeShapeComponent(shapeComponent);
-	doc.removeShapeElement(shape);
+	doc.removeShape(shape);
 	shape.getAnimationStatus().setRotating(false);
-    }
-
-    @Override
-    public void undo() {
-	// TODO Auto-generated method stub
-
     }
 
 }

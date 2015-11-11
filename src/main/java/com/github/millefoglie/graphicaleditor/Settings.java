@@ -1,9 +1,8 @@
 package com.github.millefoglie.graphicaleditor;
 
 /**
- * @author "millefoglie"
- *
- * A class for storing App settings.
+ * A temporary class for storing settings. It should be moved to a properties
+ * file instead.
  */
 public class Settings {
 
@@ -16,15 +15,8 @@ public class Settings {
         return fps;
     }
 
-    public static void setFps(int fps) {
-        Settings.fps = fps;
-    }
-
     public static int getIterationsPerFrame() {
         return iterationsPerFrame;
     }
 
-    public static void setIterationsPerFrame(int iterationsPerFrame) {
-        Settings.iterationsPerFrame = iterationsPerFrame;
-    }
 }

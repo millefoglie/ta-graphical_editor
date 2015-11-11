@@ -6,11 +6,6 @@ import com.github.millefoglie.graphicaleditor.Editor;
 import com.github.millefoglie.graphicaleditor.geometry.IntersectionDetector;
 import com.github.millefoglie.graphicaleditor.shapes.AbstractShape;
 
-/**
- * @author "millefoglie"
- *
- * The rotation transformation.
- */
 public class Rotation implements Transformation {
 
     private static final long serialVersionUID = -5358285454631896699L;
@@ -30,7 +25,7 @@ public class Rotation implements Transformation {
     public void transform() {
 	if (!expired && shape.getAnimationStatus().isRotating()) {
 	    Collection<AbstractShape> shapes = 
-		    Editor.getInstance().getDocument().getShapeElements();
+		    Editor.getInstance().getDocument().getShapes();
 
 	    shape.rotate(phi);
 

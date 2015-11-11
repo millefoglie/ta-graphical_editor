@@ -2,9 +2,6 @@ package com.github.millefoglie.graphicaleditor.shapes;
 
 import java.awt.Polygon;
 
-/**
- * The Trapezium class.
- */
 public class Trapezium extends PolygonalShape {
     
     private static final long serialVersionUID = -2715644182178429534L;
@@ -30,7 +27,7 @@ public class Trapezium extends PolygonalShape {
 	poly.addPoint(cx - 3 * UNIT / 2, cy + UNIT);
 	poly.addPoint(cx - UNIT, cy - UNIT);
 	
-	setBaseShape(poly);
+	setShape(poly);
     }
     
     @Override

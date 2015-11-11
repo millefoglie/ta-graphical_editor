@@ -5,6 +5,4 @@ import java.io.Serializable;
 public interface Command extends Serializable {
 
     public void exec();
-    
-    public void undo();
 }

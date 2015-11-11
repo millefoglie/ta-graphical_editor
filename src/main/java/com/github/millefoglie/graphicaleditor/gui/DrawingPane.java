@@ -11,13 +11,12 @@ import javax.swing.JPanel;
 
 import com.github.millefoglie.graphicaleditor.listeners.DrawingPaneMouseListener;
 
-/**
- * The Drawing Pane class.
- */
 public class DrawingPane extends JPanel {
 
     private static final long serialVersionUID = 7003768625421565753L;
+    
     private final List<ShapeComponent> shapeComponents = new LinkedList<>();
+    
     private ShapeContextMenu shapeContextMenu;
     private DrawingPaneContextMenu drawingPaneContextMenu;
 
@@ -52,7 +51,6 @@ public class DrawingPane extends JPanel {
     public void removeShapeComponent(ShapeComponent sc) {
 	shapeComponents.remove(sc);
 	remove(sc);
-	repaint();
     }
 
     /**
@@ -68,8 +66,6 @@ public class DrawingPane extends JPanel {
 	    remove(sc);
 	    it.remove();
 	}
-	
-	repaint();
     }
     
     public ShapeContextMenu getShapeContextMenu() {
@@ -79,4 +75,5 @@ public class DrawingPane extends JPanel {
     public DrawingPaneContextMenu getDrawingPaneContextMenu() {
         return drawingPaneContextMenu;
     }
+    
 }

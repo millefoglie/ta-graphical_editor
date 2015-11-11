@@ -1,6 +1,6 @@
 /**
  * @author millefoglie
  * 
- * The package which contains GUI classes.
+ * GUI and its components.
  */
 package com.github.millefoglie.graphicaleditor.gui;

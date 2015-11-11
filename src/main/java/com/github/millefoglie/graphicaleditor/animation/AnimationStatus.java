@@ -3,7 +3,7 @@ package com.github.millefoglie.graphicaleditor.animation;
 import java.io.Serializable;
 
 /**
- * The animation statuses of animated shapes.
+ * The animation statuses of animated shapes (enabled/disabled flags).
  */
 public class AnimationStatus implements Serializable {
     

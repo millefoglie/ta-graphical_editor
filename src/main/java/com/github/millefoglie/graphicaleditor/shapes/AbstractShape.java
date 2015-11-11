@@ -8,11 +8,10 @@ import com.github.millefoglie.graphicaleditor.animation.AnimationStatus;
 
 /**
  * An abstract shape that provides a bridge to Java 2D API shapes and adds
- * additional functionality for geometric manipulations and animations.
+ * additional functionality for geometric manipulations and transformations.
  */
 public abstract class AbstractShape implements Cloneable, Serializable {
     
-    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1905126146086563967L;
 
     /** The centre X. */
@@ -25,7 +24,7 @@ public abstract class AbstractShape implements Cloneable, Serializable {
     protected double theta;
     
     /** The animation status flags. */
-    protected AnimationStatus animationStatus;
+    protected AnimationStatus animationStatus  = new AnimationStatus();
     
     /** The base shape (without any transformations). */
     protected Shape baseShape;
@@ -48,7 +47,6 @@ public abstract class AbstractShape implements Cloneable, Serializable {
      * @param cy the center Y
      */
     public AbstractShape(int cx, int cy) {
-	animationStatus = new AnimationStatus();
 	this.cx = cx;
 	this.cy = cy;
     }
@@ -89,11 +87,12 @@ public abstract class AbstractShape implements Cloneable, Serializable {
         this.theta = theta;
     }
 
+    /**
+     * Set the base shape and update the current shape to match the new base
+     * and reset theta value.
+     * @param shape the new base shape
+     */
     public void setShape(Shape shape) {
-        this.shape = shape;
-    }
-    
-    public void setBaseShape(Shape shape) {
 	this.baseShape = shape;
 	this.shape = shape;
 	this.theta = 0;
@@ -101,11 +100,6 @@ public abstract class AbstractShape implements Cloneable, Serializable {
     
     public abstract PolygonalShape getProxy();
 
-    /**
-     * Rotate the shape.
-     *
-     * @param phi the angle of rotation
-     */
     public void rotate(double phi) {
 	if (affineTransform == null) {
 	    affineTransform = new AffineTransform();
@@ -123,7 +117,7 @@ public abstract class AbstractShape implements Cloneable, Serializable {
 
     @Override
     public int hashCode() {
-	return (int) theta;
+	return (int) cx;
     }
 
     @Override

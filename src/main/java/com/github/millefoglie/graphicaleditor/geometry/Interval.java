@@ -25,4 +25,5 @@ public class Interval<T extends Comparable<T>> {
         return ((i1.right.compareTo(i2.left) > 0) 
         	&& (i1.left.compareTo(i2.right) < 0));
     }
+    
 }

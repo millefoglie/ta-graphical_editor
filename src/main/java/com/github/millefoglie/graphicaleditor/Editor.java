@@ -1,11 +1,8 @@
 package com.github.millefoglie.graphicaleditor;
 
+import com.github.millefoglie.graphicaleditor.document.Document;
 import com.github.millefoglie.graphicaleditor.shapes.ShapeNames;
 
-/**
- * The editor class, responsible for setting the currently edited document
- * and used brush.
- */
 public class Editor {
     
     private static final Editor EDITOR = new Editor();
@@ -34,6 +31,5 @@ public class Editor {
     public void setShapeBrush(ShapeNames shapeBrush) {
         this.shapeBrush = shapeBrush;
     }
-    
     
 }

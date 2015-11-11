@@ -30,7 +30,7 @@ public class Square extends PolygonalShape {
 	poly.addPoint(cx + UNIT, cy + UNIT);
 	poly.addPoint(cx - UNIT, cy + UNIT);
 	
-	setBaseShape(poly);
+	setShape(poly);
     }
     
     @Override
