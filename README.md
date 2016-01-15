@@ -1,5 +1,7 @@
 # Test Assignment : Graphical Editor
 
+<img src="/screenshots/app.png" height="320">
+
 ##Description
 
 A very simple graphical editor which can add five predefined kinds of shapes to the drawing pane, make them rotate taking into account collisions detection, and also save and load documents. Undo/redo functionality is provided, as well. However, some things need refactoring, while others, like shapes dragging, currently remain unimplemented.
